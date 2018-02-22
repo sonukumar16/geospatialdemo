@@ -1,10 +1,5 @@
 const Doctor = require('../models/doctor');
-const accountSid = 'AC0674122c981e147fd9c90f30e6069d6f';
-const authToken = 'bd04070a7fbff3943bbabc825da81426';
-const fs = require('fs');
-const path  = require('path');
 
-const twilio = require('twilio')(accountSid, authToken);
 
 module.exports = {	
 	register_doctor:(req,res)=>{
@@ -35,20 +30,6 @@ module.exports = {
 					return res.json({'response_code':200,'response_message':'Successfully get doctors.',result:success});
 				}
 			});
-	},
-	test:(req,res)=>{		
-		let filename = path.join(__dirname,'twiML','test.xml');
-		console.log('filename ',filename);
-		twilio.calls.create(
-		  {
-		    url: filename,
-		    to: '+918081663629',
-		    from: '+13042442253',
-		  },
-		  (err, call) => {
-		  	console.log('Error',err);
-		  	console.log('call-->',call);
-		    process.stdout.write(call.sid);
-		  });
-	},	
+	}
+	
 };
