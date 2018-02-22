@@ -43,8 +43,8 @@
             else
             {
                 let map = new google.maps.Map(document.getElementById('map'), {
-                    zoom: 10,
-                    center: new google.maps.LatLng(28.644800,  77.216721),
+                    zoom: 11.8,
+                    center: new google.maps.LatLng($scope.showLocation[0].location.coordinates[1], $scope.showLocation[0].location.coordinates[0]),
                     mapTypeId: google.maps.MapTypeId.ROADMAP
                 });
 
@@ -62,7 +62,7 @@
                         return function() {
                             let iwContent = '<div id="iw_container">' +
                                 '<div class="iw_title"><b>Doctor</b> : '+$scope.showLocation[i].name+'</div><div class="iw_title"><b>Address</b> : '+
-                                    $scope.showLocation[i].address+'</div></div>';
+                                    $scope.showLocation[i].address+'</div><div class="iw_title"><b>Description</b> : '+$scope.showLocation[i].description+'</div></div>';
                             infowindow.setContent(iwContent);
                             infowindow.open(map, marker);
                         }
@@ -70,15 +70,16 @@
                 }
             }
         }
-        google.maps.event.addDomListener(window, 'load', initialize);
+        //google.maps.event.addDomListener(window, 'load', initialize);
+        initialize();
         $scope.fetchDoctors = () =>{
-            checkMap = 1;
+            
             let obj = {
                 lon_lat : [$scope.place.geometry.location.lng(),$scope.place.geometry.location.lat()]
             };
             mainService.fetchDoctors(obj).then((success)=>{
                 if(success.data.response_code==200){
-                    
+                    checkMap = 1;
                     $scope.showLocation = success.data.result; 
                     initialize();
                 }
