@@ -1,0 +1,11 @@
+<div class="container">
+<div class="form-group" style="z-index: 5000 !important;">
+    <label>Enter Your Location</label>
+    <input type="text" class="form-control" id="area_name" ng-change="initFun('area_name')" name="area" ng-model="master.location" style="margin-left: 20px;margin-right: 20px">
+    <button ng-click="fetchDoctors()" style="margin-top: 20px">Search Doctors</button>
+</div>
+<div class="col-md-6">
+    <button ng-click="goToDoctor()">Add Doctor</button>
+</div>
+<div id='map' style="width: 500px; height: 500px;margin-top: 50px;margin-left: 50px"></div>
+</div>

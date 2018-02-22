@@ -1,17 +1,18 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-angular.module('myApp', [
-  'ngRoute',
-  'ui.router',
-  'myApp.view1',
-  'myApp.services'
-]).
-config( function($stateProvider, $urlRouterProvider) {
-  $stateProvider.state('/view1', {
-  			url: '/view1',
-            templateUrl: 'view1/view1.html',
-            controller: 'View1Ctrl'
+const app = angular.module('myApp', ['ui.router']).
+config( function($stateProvider, $urlRouterProvider, $locationProvider) {
+  $stateProvider.state('search_doctor', {
+  			url: '/search_doctor',
+            templateUrl: 'search_doctor/search_doctor.html',
+            controller: 'searchDoctorCtrl'
+        })
+  .state('add_doctor', {
+        url: '/add_doctor',
+            templateUrl: 'add_doctor/add_doctor.html',
+            controller: 'addDoctorCtrl'
         });
-  $urlRouterProvider.otherwise( '/view1');
+  $urlRouterProvider.otherwise( '/search_doctor');
+  
 });
