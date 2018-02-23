@@ -6,16 +6,16 @@ const doctorRoute = require('./routes/index');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
-mongoose.connection.openUri('mongodb://127.0.0.1/geospationDB',(err,connect)=>{
-	err?console.log('Connection error',err):console.log('Successfully connection made to mongodb');
+mongoose.connection.openUri('mongodb://127.0.0.1/geospationDB', (err, connect) => {
+    err ? console.log('Connection error', err) : console.log('Successfully connection made to mongodb');
 });
 
 const app = express();
 app.use(bodyParser.json());
 app.use(morgan('dev'));
 app.use(cors());
-app.use(express.static(path.join(__dirname,'assets')));
+app.use(express.static(path.join(__dirname, 'assets')));
 let api = '/api/v1';
 app.use(`${api}/doctor`, doctorRoute);
- 
-app.listen(process.env.NODE_ENV || 3000,()=> console.log(`server is listen on ${process.env.NODE_ENV || 3000}`));
+
+app.listen(process.env.NODE_ENV || 3000, () => console.log(`server is listen on ${process.env.NODE_ENV || 3000}`));
