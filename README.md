@@ -1,6 +1,6 @@
 # geospatialdemo
 
- Use these commands on terminal to run this project :-
+ Use these commands(on terminal) to run the project :-
 
 1. npm install
 2. First Register doctors .
